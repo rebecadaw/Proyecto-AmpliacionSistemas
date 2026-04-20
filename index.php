@@ -1,25 +1,33 @@
+<?php
+// Recogemos la lista anterior y el nuevo producto
+$listaAnterior = $_POST['lista_acumulada'] ?? '';
+$nuevoProducto = $_POST['producto'] ?? '';
+
+// Si hay un producto nuevo, lo añadimos a la cadena
+if ($nuevoProducto) {
+    $listaAnterior .= htmlspecialchars($nuevoProducto) . "<br>";
+}
+?>
+
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Lista Simple</title>
-</head>
+<head><title>Lista de la Compra</title></head>
 <body>
+    <h2>🛒 Mi Lista</h2>
+    
     <form method="POST">
-        <input type="text" name="item" placeholder="Nuevo producto" required>
-        <button type="submit">Agregar</button>
+        <!-- Campo oculto que guarda los productos anteriores -->
+        <input type="hidden" name="lista_acumulada" value="<?php echo $listaAnterior; ?>">
+        
+        <input type="text" name="producto" placeholder="Añadir algo..." autofocus>
+        <button type="submit">Añadir</button>
     </form>
 
-    <h3>Tu lista:</h3>
-    <ul>
-        <?php
-        // Si el usuario envió algo, lo mostramos de inmediato
-        if (isset($_POST['item'])) {
-            $producto = htmlspecialchars($_POST['item']);
-            echo "<li><strong>Recién añadido:</strong> $producto</li>";
-        }
-        ?>
-        <li>Ejemplo: Pan</li>
-        <li>Ejemplo: Huevos</li>
-    </ul>
+    <div>
+        <p><?php echo $listaAnterior; ?></p>
+    </div>
+
+    <hr>
+    <a href="lista.php">Borrar todo</a>
 </body>
 </html>
