@@ -1,33 +1,17 @@
-<?php
-// Recogemos la lista anterior y el nuevo producto
-$listaAnterior = $_POST['lista_acumulada'] ?? '';
-$nuevoProducto = $_POST['producto'] ?? '';
+<?php get_header(); ?>
 
-// Si hay un producto nuevo, lo añadimos a la cadena
-if ($nuevoProducto) {
-    $listaAnterior .= htmlspecialchars($nuevoProducto) . "<br>";
-}
-?>
+<div class="contenedor">
+    <h1>Lista de la compra</h1>
 
-<!DOCTYPE html>
-<html>
-<head><title>Lista de la Compra</title></head>
-<body>
-    <h2>🛒 Mi Lista</h2>
-    
-    <form method="POST">
-        <!-- Campo oculto que guarda los productos anteriores -->
-        <input type="hidden" name="lista_acumulada" value="<?php echo $listaAnterior; ?>">
-        
-        <input type="text" name="producto" placeholder="Añadir algo..." autofocus>
-        <button type="submit">Añadir</button>
-    </form>
+    <p>Proyecto simple integrado como tema WordPress.</p>
 
-    <div>
-        <p><?php echo $listaAnterior; ?></p>
-    </div>
+    <ul>
+        <li>Leche</li>
+        <li>Pan</li>
+        <li>Huevos</li>
+        <li>Fruta</li>
+        <li>Pasta</li>
+    </ul>
+</div>
 
-    <hr>
-    <a href="lista.php">Borrar todo</a>
-</body>
-</html>
+<?php get_footer(); ?>
