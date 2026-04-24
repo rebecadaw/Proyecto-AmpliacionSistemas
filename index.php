@@ -12,6 +12,7 @@
         <li>Fruta</li>
         <li>Pasta</li>
         <li>Jamon</li>
+        <li>Rebeca y Silvana las mejores!</li>
     </ul>
 </div>
 
